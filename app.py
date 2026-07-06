@@ -1,9 +1,5 @@
 import streamlit as st
 
-def load_css():
-    with open("style.css") as f:
-        st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
-        
 from prompts import (
     explain_prompt,
     example_prompt,
@@ -19,6 +15,11 @@ from prompts import (
 from utils import generate_response
 
 
+def load_css():
+    with open("style.css") as f:
+        st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+
+
 st.set_page_config(
     page_title="AI Learning Buddy",
     page_icon="🎓",
@@ -27,13 +28,35 @@ st.set_page_config(
 
 load_css()
 
+# ==========================
+# Header
+# ==========================
 st.markdown("<h1>🎓 AI Learning Buddy</h1>", unsafe_allow_html=True)
+
 st.markdown(
     "<p style='text-align:center;color:gray;'>Your Personal AI Learning Platform</p>",
     unsafe_allow_html=True
 )
+
+# ==========================
+# Metrics
+# ==========================
+col1, col2, col3 = st.columns(3)
+
+with col1:
+    st.metric("📖 Learning Modes", "10")
+
+with col2:
+    st.metric("🤖 AI Powered", "Yes")
+
+with col3:
+    st.metric("⚡ Response", "Instant")
+
 st.markdown("---")
 
+# ==========================
+# Sidebar
+# ==========================
 st.sidebar.title("📚 Features")
 
 st.sidebar.markdown("""
@@ -58,7 +81,12 @@ st.sidebar.markdown("""
 💬 Ask Anything
 """)
 
-activity = st.selectbox(
+# ==========================
+# Main Content
+# ==========================
+st.subheader("📚 Choose a Learning Mode")
+
+activity = st.radio(
     "Choose Activity",
     [
         "Explain Concept",
@@ -74,6 +102,7 @@ activity = st.selectbox(
     ]
 )
 
+# Input Field
 if activity == "Notes Summarizer":
 
     user_input = st.text_area(
@@ -88,6 +117,7 @@ else:
         placeholder="Example: Python, AI, DBMS..."
     )
 
+# Generate Button
 if st.button("🚀 Generate"):
 
     if user_input.strip() == "":
@@ -126,28 +156,41 @@ if st.button("🚀 Generate"):
         else:
             prompt = user_input
 
-        with st.spinner("Generating..."):
+        with st.spinner("🤖 AI is generating your response..."):
 
             try:
 
                 result = generate_response(prompt)
 
-                st.success("Done!")
+                st.success("✅ Response Generated Successfully!")
 
                 st.markdown("## 🤖 AI Response")
 
-                st.write(result)
+                st.markdown(
+                    f"""
+                    <div class="response-card">
+
+                    {result}
+
+                    </div>
+                    """,
+                    unsafe_allow_html=True
+                )
 
                 st.download_button(
-                    "📥 Download Response",
-                    result,
-                    file_name="AI_Response.txt"
+                    label="📥 Download Response",
+                    data=result,
+                    file_name="AI_Response.txt",
+                    mime="text/plain"
                 )
 
             except Exception as e:
 
                 st.error(str(e))
 
+# ==========================
+# Footer
+# ==========================
 st.markdown("---")
 
 st.caption("Made with ❤️ using Streamlit + OpenRouter")
