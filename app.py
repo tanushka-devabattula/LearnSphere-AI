@@ -6,13 +6,14 @@ from prompts import (
     quiz_prompt,
     roadmap_prompt,
     interview_prompt,
-    summary_prompt
+    summary_prompt,
+    flashcard_prompt,
+    planner_prompt,
+    resources_prompt
 )
 
 from utils import generate_response
 
-
-# ---------------- PAGE CONFIG ----------------
 
 st.set_page_config(
     page_title="AI Learning Buddy",
@@ -20,23 +21,14 @@ st.set_page_config(
     layout="wide"
 )
 
-
-# ---------------- HEADER ----------------
-
 st.title("🎓 AI Learning Buddy")
-st.subheader("Learn Anything with AI")
+st.caption("Learn Smarter with AI")
 
 st.markdown("---")
 
+st.sidebar.title("📚 Features")
 
-# ---------------- SIDEBAR ----------------
-
-st.sidebar.title("📚 AI Learning Buddy")
-
-st.sidebar.info(
-    """
-Features
-
+st.sidebar.markdown("""
 📖 Explain Concept
 
 🌍 Real-Life Example
@@ -49,16 +41,14 @@ Features
 
 📝 Notes Summarizer
 
+🧠 Flashcards
+
+📅 Study Planner
+
+📚 Learning Resources
+
 💬 Ask Anything
-"""
-)
-
-st.sidebar.markdown("---")
-
-st.sidebar.success("Made with ❤️ using Streamlit + OpenRouter")
-
-
-# ---------------- INPUT ----------------
+""")
 
 activity = st.selectbox(
     "Choose Activity",
@@ -69,73 +59,72 @@ activity = st.selectbox(
         "Learning Roadmap",
         "Interview Questions",
         "Notes Summarizer",
+        "Flashcards",
+        "Study Planner",
+        "Learning Resources",
         "Ask Anything"
     ]
 )
 
-
-# ---------------- INPUT BOX ----------------
-
 if activity == "Notes Summarizer":
 
     user_input = st.text_area(
-        "Paste your notes here",
+        "Paste your notes",
         height=250
     )
 
 else:
 
     user_input = st.text_input(
-        "Enter a topic",
-        placeholder="Example: Python, DBMS, AI..."
+        "Enter Topic",
+        placeholder="Example: Python, AI, DBMS..."
     )
-
-
-# ---------------- BUTTON ----------------
 
 if st.button("🚀 Generate"):
 
     if user_input.strip() == "":
 
-        st.warning("Please enter some text.")
+        st.warning("Please enter input.")
 
     else:
 
         if activity == "Explain Concept":
-
             prompt = explain_prompt(user_input)
 
         elif activity == "Real-Life Example":
-
             prompt = example_prompt(user_input)
 
         elif activity == "Generate Quiz":
-
             prompt = quiz_prompt(user_input)
 
         elif activity == "Learning Roadmap":
-
             prompt = roadmap_prompt(user_input)
 
         elif activity == "Interview Questions":
-
             prompt = interview_prompt(user_input)
 
         elif activity == "Notes Summarizer":
-
             prompt = summary_prompt(user_input)
 
-        else:
+        elif activity == "Flashcards":
+            prompt = flashcard_prompt(user_input)
 
+        elif activity == "Study Planner":
+            prompt = planner_prompt(user_input)
+
+        elif activity == "Learning Resources":
+            prompt = resources_prompt(user_input)
+
+        else:
             prompt = user_input
 
-        with st.spinner("Generating response..."):
+        with st.spinner("Generating..."):
 
             try:
 
                 result = generate_response(prompt)
 
-                st.success("Response Generated Successfully!")
+                st.success("Done!")
 
                 st.markdown("## 🤖 AI Response")
 
@@ -151,7 +140,6 @@ if st.button("🚀 Generate"):
 
                 st.error(str(e))
 
-
 st.markdown("---")
 
-st.caption("© 2026 AI Learning Buddy")
+st.caption("Made with ❤️ using Streamlit + OpenRouter")
