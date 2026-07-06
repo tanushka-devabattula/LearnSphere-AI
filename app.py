@@ -1,5 +1,9 @@
 import streamlit as st
 
+def load_css():
+    with open("style.css") as f:
+        st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+        
 from prompts import (
     explain_prompt,
     example_prompt,
@@ -21,9 +25,13 @@ st.set_page_config(
     layout="wide"
 )
 
-st.title("🎓 AI Learning Buddy")
-st.caption("Learn Smarter with AI")
+load_css()
 
+st.markdown("<h1>🎓 AI Learning Buddy</h1>", unsafe_allow_html=True)
+st.markdown(
+    "<p style='text-align:center;color:gray;'>Your Personal AI Learning Platform</p>",
+    unsafe_allow_html=True
+)
 st.markdown("---")
 
 st.sidebar.title("📚 Features")
