@@ -108,9 +108,26 @@ streamlit run app.py
 
 ---
 
+
 # 📸 Screenshots
 
-> Add screenshots after completing the project.
+### 🏠 Dashboard
+<img width="100%" alt="Dashboard" src="assets/dashboard.png">
+
+### 📘 Learn Module
+<img width="100%" alt="Learn Module" src="assets/learn.png">
+
+### 💼 Interview Preparation
+<img width="100%" alt="Interview Preparation" src="assets/interview.png">
+
+### 📝 Notes Summarizer
+<img width="100%" alt="Notes Summarizer" src="assets/notes.png">
+
+### 📄 PDF Tools
+<img width="100%" alt="PDF Tools" src="assets/pdf-tools.png">
+
+### 📚 Learning Resources
+<img width="100%" alt="Learning Resources" src="assets/resources.png">
 
 Example:
 
