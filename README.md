@@ -4,6 +4,10 @@ An AI-powered learning assistant built with **Streamlit** and the **OpenRouter A
 
 ---
 
+## 🌐 Live Demo
+
+**🔗 Streamlit App:** [https://your-streamlit-app-url.streamlit.app](https://ai-learning-buddy-ekzq8dkkqnlmxgky5usgcd.streamlit.app/)
+
 ## ✨ Features
 
 ### 📘 Learn
@@ -112,35 +116,32 @@ streamlit run app.py
 # 📸 Screenshots
 
 ### 🏠 Dashboard
-<img width="100%" alt="Dashboard" src="assets/dashboard.png">
+<img width="100%" alt="Dashboard" src="dashboard.png">
+
+---
 
 ### 📘 Learn Module
-<img width="100%" alt="Learn Module" src="assets/learn.png">
+<img width="100%" alt="Learn Module" src="learn.png">
+
+---
 
 ### 💼 Interview Preparation
-<img width="100%" alt="Interview Preparation" src="assets/interview.png">
+<img width="100%" alt="Interview Preparation" src="interview.png">
+
+---
 
 ### 📝 Notes Summarizer
-<img width="100%" alt="Notes Summarizer" src="assets/notes.png">
+<img width="100%" alt="Notes Summarizer" src="notes.png">
+
+---
 
 ### 📄 PDF Tools
-<img width="100%" alt="PDF Tools" src="assets/pdf-tools.png">
+<img width="100%" alt="PDF Tools" src="pdf-tools.png">
+
+---
 
 ### 📚 Learning Resources
-<img width="100%" alt="Learning Resources" src="assets/resources.png">
-
-Example:
-
-```
-assets/
-│── dashboard.png
-│── learn.png
-│── interview.png
-│── notes.png
-│── pdf-tools.png
-│── resources.png
-```
-
+<img width="100%" alt="Learning Resources" src="resources.png">
 ---
 
 # 💡 Future Enhancements
