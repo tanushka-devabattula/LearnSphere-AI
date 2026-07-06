@@ -1,163 +1,57 @@
-def explain_prompt(topic):
+def pdf_summary_prompt(text):
     return f"""
-Explain {topic} in beginner-friendly language.
+Summarize the following PDF notes.
 
 Include:
-- Definition
-- Why it is important
-- Key points
-- Advantages
-- Applications
+- Short Summary
+- Key Points
+- Important Terms
+- Revision Notes
 
-Use simple English.
+PDF Content:
+
+{text}
 """
 
 
-def example_prompt(topic):
+def pdf_quiz_prompt(text):
     return f"""
-Give 5 simple real-life examples of {topic}.
+Create 10 MCQs with answers from the following PDF notes.
 
-Explain each example briefly.
+PDF Content:
+
+{text}
 """
 
 
-def quiz_prompt(topic):
+def pdf_flashcards_prompt(text):
     return f"""
-Create 10 multiple-choice questions on {topic}.
-
-Each question must contain:
-
-A)
-B)
-C)
-D)
-
-Mention the correct answer after every question.
-"""
-
-
-def roadmap_prompt(topic):
-    return f"""
-Create a complete roadmap for learning {topic}.
+Create 15 flashcards from the following PDF.
 
 Format:
 
-📘 Beginner
-
-📙 Intermediate
-
-📕 Advanced
-
-Projects:
-- Beginner Project
-- Intermediate Project
-- Advanced Project
-
-Recommend:
-- 2 Websites
-- 2 YouTube Channels
-- Estimated time required.
-"""
-
-
-def interview_prompt(topic):
-    return f"""
-Prepare interview questions on {topic}.
-
-Include:
-
-🟢 Beginner Questions (10)
-
-🟡 Intermediate Questions (10)
-
-🔴 Advanced Questions (10)
-
-💻 Coding Questions (if applicable)
-
-⭐ Interview Tips
-
-📚 Best Resources
-"""
-
-
-def summary_prompt(notes):
-    return f"""
-Summarize the following notes.
-
-Provide:
-
-📌 Short Summary
-
-✅ Key Points
-
-📝 Revision Notes
-
-📚 Important Terms
-
-❓5 Practice Questions
-
-Notes:
-
-{notes}
-"""
-
-
-def flashcard_prompt(topic):
-    return f"""
-Create 15 flashcards for {topic}.
-
-Format exactly like this:
-
-🃏 Flashcard 1
-
 Question:
 ...
 
 Answer:
 ...
 
---------------------
+PDF Content:
 
-🃏 Flashcard 2
-
-Question:
-...
-
-Answer:
-...
-
-Continue until 15 flashcards.
+{text}
 """
 
 
-def planner_prompt(topic):
+def pdf_interview_prompt(text):
     return f"""
-Create a 30-day study plan for learning {topic}.
-
-For each day include:
-- Topic
-- Practice Task
-
-End with:
-- Mini Project
-- Final Project
-- Interview Preparation Tips
-"""
-
-
-def resources_prompt(topic):
-    return f"""
-Recommend the best FREE resources to learn {topic}.
+Generate interview questions from these PDF notes.
 
 Include:
+- Beginner
+- Intermediate
+- Advanced
 
-📚 Websites
+PDF Content:
 
-🎥 YouTube Channels
-
-📖 Documentation
-
-💻 Practice Platforms
-
-Mention why each resource is useful.
+{text}
 """
