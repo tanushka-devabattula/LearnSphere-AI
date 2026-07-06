@@ -25,6 +25,7 @@ AI Learning Buddy helps you learn **any topic** through:
 - 📖 Simple Explanations
 - 🌍 Real-Life Examples
 - ❓ Quiz Generation
+- 🗺️ Learning Roadmap
 - 💬 Ask Anything
 """)
 
@@ -39,6 +40,7 @@ activity = st.selectbox(
         "Explain Concept",
         "Real-Life Example",
         "Generate Quiz",
+        "Learning Roadmap",
         "Ask Anything"
     ]
 )
@@ -58,6 +60,33 @@ if st.button("🚀 Generate"):
 
         elif activity == "Generate Quiz":
             prompt = f"Create 5 multiple-choice questions with answers on '{topic}'."
+
+        elif activity == "Learning Roadmap":
+            prompt = f"""
+Create a complete beginner-friendly roadmap to learn {topic}.
+
+Organize it like this:
+
+📘 Beginner
+- Topics to learn
+
+📙 Intermediate
+- Topics to learn
+
+📕 Advanced
+- Topics to learn
+
+After that include:
+
+✅ One beginner project
+✅ One intermediate project
+✅ One advanced project
+
+Finally recommend:
+- 2 free websites
+- 2 YouTube channels
+- Estimated time to master the topic
+"""
 
         else:
             prompt = topic
