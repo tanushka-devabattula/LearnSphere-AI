@@ -363,5 +363,104 @@ with pdf_tab:
     if st.session_state.pdf_text:
 
         st.markdown("---")
+                pdf_feature = st.selectbox(
+            "Choose a PDF Tool",
+            [
+                "Summarize PDF",
+                "Generate Quiz",
+                "Generate Flashcards",
+                "Generate Interview Questions",
+            ],
+            key="pdf_feature",
+        )
+
+        if st.button(
+            "🚀 Process PDF",
+            use_container_width=True,
+            key="pdf_button",
+        ):
+
+            with st.spinner("Analyzing PDF..."):
+
+                if pdf_feature == "Summarize PDF":
+
+                    prompt = pdf_summary_prompt(
+                        st.session_state.pdf_text
+                    )
+
+                elif pdf_feature == "Generate Quiz":
+
+                    prompt = pdf_quiz_prompt(
+                        st.session_state.pdf_text
+                    )
+
+                elif pdf_feature == "Generate Flashcards":
+
+                    prompt = pdf_flashcards_prompt(
+                        st.session_state.pdf_text
+                    )
+
+                else:
+
+                    prompt = pdf_interview_prompt(
+                        st.session_state.pdf_text
+                    )
+
+                result = generate_response(prompt)
+
+                st.session_state.pdf_response = result
+
+                show_success("PDF processed successfully!")
+
+        if st.session_state.pdf_response:
+
+            st.markdown("---")
+
+            display_output(
+                pdf_feature,
+                st.session_state.pdf_response,
+            )
+# =====================================================
+# Resources Tab
+# =====================================================
+
+with resource_tab:
+
+    st.subheader("⚙️ Learning Resources")
+
+    topic = st.text_input(
+        "Enter a topic",
+        placeholder="Example: Python, DSA, Machine Learning...",
+        key="resource_topic"
+    )
+
+    if st.button(
+        "📚 Find Resources",
+        use_container_width=True,
+        key="resource_button"
+    ):
+
+        if not topic.strip():
+            show_error("Please enter a topic.")
+            st.stop()
+
+        with st.spinner("Finding the best resources..."):
+
+            prompt = resources_prompt(topic)
+
+            result = generate_response(prompt)
+
+            st.session_state.resource_response = result
+
+            show_success("Resources generated successfully!")
+
+    if st.session_state.resource_response:
+
+        st.markdown("---")
+
+        display_output(
+            "Recommended Resources",
+            st.session_state.resource_response
+        )
 
         
