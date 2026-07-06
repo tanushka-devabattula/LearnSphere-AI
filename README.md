@@ -6,7 +6,7 @@ An AI-powered learning assistant built with **Streamlit** and the **OpenRouter A
 
 ## 🌐 Live Demo
 
-**🔗 Streamlit App:** [https://your-streamlit-app-url.streamlit.app](https://ai-learning-buddy-ekzq8dkkqnlmxgky5usgcd.streamlit.app/)
+**🔗 Streamlit App:** [https://ai-learning-buddy-ekzq8dkkqnlmxgky5usgcd.streamlit.app/](https://learnsphere-ai-uvufmm9zucirhwfx9kakjr.streamlit.app/)
 
 ## ✨ Features
 
